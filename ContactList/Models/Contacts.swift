@@ -7,14 +7,14 @@
 
 import Foundation
 
-struct User {
+struct Contact {
     var name: String
     var surname: String
     var phone: String
     var email: String
     
-    static func getUsers() -> [User]? {
-        var users: [User] = []
+    static func getContacts() -> [Contact] {
+        var contacts: [Contact] = []
         
         for _ in 1...names.count {
             guard let userName = names.randomElement(),
@@ -22,23 +22,23 @@ struct User {
                   let userPhone = phoneNumbers.randomElement(),
                   let userEmail = emails.randomElement()
             else {
-                return nil
+                return contacts
             }
 
-            let user = User(
+            let contact = Contact(
                 name: userName,
                 surname: userSurname,
                 phone: userPhone,
                 email: userEmail
             )
             
-            users.append(user)
+            contacts.append(contact)
             
             names.removeAll { $0 == userName }
             surnames.removeAll { $0 == userSurname }
             phoneNumbers.removeAll { $0 == userPhone }
             emails.removeAll { $0 == userEmail }
         }
-        return users
+        return contacts
     }
 }
